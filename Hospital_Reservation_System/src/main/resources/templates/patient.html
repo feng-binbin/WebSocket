@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>在线挂号平台</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/nav.css">
+    <link rel="stylesheet" href="../static/css/photo_selector.css">
+
+</head>
+<body style="background: wheat">
+
+<div class="topNavBar">
+    <div class="container">
+        <a href="staff.html">员工版</a>
+        <a href="patient.html" class="on">患者版</a>
+    </div>
+</div>
+
+<div class="rightNav">
+    <ul>
+        <li><a href="#"><span class="s2">挂号预约</span></a></li>
+        <li><a href="#"><span class="s2">特色科室</span></a></li>
+        <li><a href="#"><span class="s2">报告查询</span></a></li>
+        <li><a href="#"><span class="s2">值班查询</span></a></li>
+        <li><a href="#"><span></span></a></li>
+    </ul>
+</div>
+
+<div class="navList">
+    <ul>
+        <li><a href="#" class="one">导航1</a></li>
+        <li><a href="#" class="one">导航2</a></li>
+        <li><a href="#" class="one">导航3</a></li>
+        <li><a href="#" class="one">导航4</a></li>
+        <li><a href="#" class="one">导航5</a></li>
+    </ul>
+</div>
+<div>
+    <div class="photoDisplayBox">
+        <div class="innerBox">
+            <ul>
+                <li><a href="#"><img src="../static/images/index.jpg"></a></li>
+                <li><a href="#"><img src="../static/images/loginbackground.jpg"></a></li>
+                <li><a href="#"><img src="../static/images/love2.jpg"></a></li>
+                <li><a href="#"><img src="../static/images/color1.jpg"></a></li>
+                <li><a href="#"><img src="../static/images/color2.jpg"></a></li>
+            </ul>
+        </div>
+
+        <div class="selector">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    let rightNavLi = document.querySelectorAll(".rightNav li");
+    let rightNavSpan = document.querySelectorAll(".rightNav span");
+
+    for (let i = 0; i < rightNavLi.length; i++) {
+        rightNavSpan[i].onmouseover = function () {
+            console.log("鼠标移入了。")
+            rightNavLi[i].style.background = "#015128";
+            rightNavSpan[i].style.color = "white";
+        }
+
+        rightNavSpan[i].onmouseout = function () {
+            console.log("鼠标移出了。");
+            rightNavLi[i].style.background = "white";
+            rightNavSpan[i].style.color = "black";
+        }
+    }
+
+</script>
+
+<script src="../static/js/photo_selector.js"></script>
+</body>
+</html>

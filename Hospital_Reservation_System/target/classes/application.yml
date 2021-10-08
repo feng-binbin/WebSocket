@@ -1,0 +1,24 @@
+server:
+  port: 9099
+  servlet:
+    context-path: /hospital
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/hospital_order_db?serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: fengbin
+    type: com.alibaba.druid.pool.DruidDataSource
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false
+    auto-mapping-behavior: full
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:com/feng/hospital_reservation_system/mapper/xml/*.xml
+  global-config:
+    db-config:
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+

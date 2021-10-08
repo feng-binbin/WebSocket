@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.feng.hospital_reservation_system.mapper.PatientMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.feng.hospital_reservation_system.pojo.Patient">
+        <id column="patient_id" property="patientId" />
+        <result column="patient_password" property="patientPassword" />
+        <result column="patient_name" property="patientName" />
+        <result column="patient_age" property="patientAge" />
+        <result column="patient_gender" property="patientGender" />
+        <result column="patient_phoneNum" property="patientPhonenum" />
+        <result column="patient_address" property="patientAddress" />
+        <result column="modifier" property="modifier" />
+        <result column="modify_time" property="modifyTime" />
+        <result column="create_time" property="createTime" />
+        <result column="version" property="version" />
+        <result column="deleted" property="deleted" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        patient_id, patient_password, patient_name, patient_age, patient_gender, patient_phoneNum, patient_address, modifier, modify_time, create_time, version, deleted
+    </sql>
+
+</mapper>
