@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+
+<input type="text" name="userId" id="userId" placeholder="请输入用户id">
+<input type="button" name="login" id="login" onclick="login()" value="登录">
+<input type="button" name="submit" id="submit" value="挂号" onclick="send()">
+
+<textarea id="show" style="border: 1px solid black;width: 400px;height: 400px">
+
+</textarea>
+
+<script>
+
+    let userId = document.getElementById("userId");
+    let sendText = document.getElementById("sendText");
+    let show = document.getElementById("show");
+
+    let socket;
+
+    function login() {
+        openSocket();
+    }
+
+    function send() {
+        let msg = JSON.stringify({patient_id: userId.value, status: "1"})
+        socket.send(msg);
+    }
+
+    function openSocket() {
+        if (typeof (WebSocket) == "undefined") {
+            console.log("该浏览器不支持WebSocket!")
+        } else {
+            console.log("该浏览器支持WebSocket")
+            let socketUrl = "http://localhost:8090/websocket/websocket/" + userId.value;
+            socketUrl = socketUrl.replace("http", "ws");
+            if (socket != null) {
+                socket.close();
+                socket = null;
+            }
+            socket = new WebSocket(socketUrl);
+
+            socket.open = function () {
+                console.log("WebSocket已打开！");
+            }
+
+            socket.onclose = function () {
+                console.log("WebSocket已关闭！")
+            }
+
+            socket.error = function () {
+                console.log("WebSocket发生了错误！");
+            }
+
+            socket.onmessage = function (msg) {
+                show.append(msg.data);
+            }
+        }
+    }
+
+
+</script>
+
+</body>
+</html>
