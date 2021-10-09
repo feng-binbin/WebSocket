@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+
+<input type="text" name="userId" id="userId" placeholder="请输入用户id">
+<input type="button" name="login" id="login" onclick="login()" value="登录">
+<input type="text" name="receiver" id="receiver" placeholder="请输入信息接收人">
+<input type="text" name="info" id="info" placeholder="请输入需要发送的信息...">
+<input type="button" name="send" id="send" value="发送">
+<input type="button" name="submit" id="submit" value="挂号">
+
+<textarea id="show" style="border: 1px solid black;width: 400px;height: 400px">
+</textarea>
+
+<p1 id="showUser">
+
+</p1>
+
+<script>
+
+    let userId = document.getElementById("userId");
+    let receiver_id = document.getElementById("receiver");
+    let infoText = document.getElementById("info");
+    let send = document.getElementById("send");
+    let submit = document.getElementById("submit");
+    let show = document.getElementById("show");
+    let showUser = document.getElementById("showUser");
+
+    let socket = null;
+
+    function login() {
+        openSocket();
+    }
+
+    submit.onclick = () => {
+        let msg = JSON.stringify({username: userId, type: 0, info: userId.value + "点击了挂号"});
+        if (socket === null)
+            alert("请先登录！");
+        else
+            socket.send(msg);
+    }
+
+    send.onclick = () => {
+        if (receiver_id.value.length !== 0) {
+            let msg = JSON.stringify({
+                username: userId.value,
+                type: 1,
+                info: infoText.value,
+                receiver: receiver_id.value
+            });
+            socket.send(msg)
+            return;
+        }
+        alert("信息接收人不能为空！");
+    }
+
+
+    function openSocket() {
+        if (typeof (WebSocket) == "undefined") {
+            console.log("该浏览器不支持WebSocket!")
+        } else {
+            console.log("该浏览器支持WebSocket")
+            let socketUrl = "http://localhost:8090/websocket/websocket/" + userId.value;
+            socketUrl = socketUrl.replace("http", "ws");
+            if (socket != null) {
+                socket.close();
+                socket = null;
+            }
+            socket = new WebSocket(socketUrl);
+
+            socket.open = function () {
+                console.log("WebSocket已打开！");
+            }
+
+            socket.onclose = function () {
+                console.log("WebSocket已关闭！")
+            }
+
+            socket.error = function () {
+                console.log("WebSocket发生了错误！");
+            }
+
+            socket.onmessage = function (msg) {
+                let data = JSON.parse(msg.data);
+                if (data.list === undefined) {
+                    alert("不存在list！")
+                }else {
+                    console.log(data.list)
+                    let str = '';
+                    for (let i = 0; i < data.list.length; i++) {
+                        str = str + data.list[i].user_id;
+                    }
+                    showUser.innerHTML = str;
+                    console.log("str:"+str);
+                };
+                show.append(data.info+"\n");
+            }
+        }
+    }
+
+</script>
+
+</body>
+</html>

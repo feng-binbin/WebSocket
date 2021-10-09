@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-size: 100% 1080px;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%);
+}
+
+.container {
+    position: relative;
+    width: 70%;
+    margin: auto;
+}
+
+.leftFrame {
+    display: inline-block;
+    float: left;
+    width: 80%;
+    height: 800px;
+    background-color: red;
+    border: 1px solid black;
+}
+
+.leftFrame .header {
+    width: 100%;
+    height: 70%;
+    background-color: chocolate;
+}
+
+.leftFrame .header .chatInfoBox {
+    width: 100%;
+    height: 100%;
+    font-size: 24px;
+    resize: none;
+    box-sizing: border-box;
+    border: 1px solid black;
+    background-color: white;
+    overflow-y: auto;
+}
+
+.leftFrame .bottom {
+    width: 100%;
+    height: 30%;
+    background-color: wheat;
+}
+
+.leftFrame .bottomHead {
+    width: 100%;
+    height: 15%;
+}
+
+.leftFrame .bottom textarea {
+    width: 100%;
+    height: 60%;
+    font-size: 20px;
+    padding: 5px;
+    resize: none;
+    overflow: hidden;
+}
+
+.leftFrame .bottomFoot {
+    width: 100%;
+    height: 25%;
+    text-align: right;
+}
+
+.rightFrame {
+    display: inline-block;
+    float: right;
+    width: 20%;
+    height: 800px;
+    background-color: wheat;
+    border: 1px solid black;
+}
+
+.rightFrame .header{
+    width: 100%;
+    height: 5%;
+    border: 1px solid black;
+    font-size: 24px;
+    text-align: center;
+}
+
+.rightFrame ul {
+    width: 100%;
+    height: 95%;
+    list-style: none;
+    overflow: hidden;
+}
+
+.rightFrame li {
+    width: 100%;
+    height: 5%;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.rightFrame li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 100%;
+    text-decoration: none;
+    background-color: red;
+}
+
+.bottomFoot .btn {
+    width: 100px;
+    margin: 10px 10px;
+}
+
+.sendDiv {
+    margin-top: 10px;
+    width: 100%;
+    text-align: right;
+    float: left;
+}
+
+.send_p {
+    background-color: chartreuse;
+    border-radius: 5px;
+    padding: 5px;
+    float: right;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.receiveDiv {
+    margin-top: 10px;
+    width: 100%;
+    float: left;
+}
+
+.receive_p {
+    font-size: 24px;
+    margin-left: 10px;
+    text-align: left;
+    border-radius: 5px;
+    padding: 5px;
+    float: left;
+}
+
+.receive_p2 {
+    margin-left: 5px;
+    text-align: left;
+    border-radius: 5px;
+    padding: 5px;
+    float: left;
+    background-color: #2aabd2;
+}
+
+.timeSend{
+    height: 0px;
+    text-align: center;
+}
+
