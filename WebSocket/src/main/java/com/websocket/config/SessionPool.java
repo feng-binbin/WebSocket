@@ -13,6 +13,7 @@ public class SessionPool {
     public static Map<String, Session> sessions = new ConcurrentHashMap<>();
     public static List<User> onlineUsers = Collections.synchronizedList(new ArrayList<>());
 
+    /*每次有新Session进入*/
     public static void open(Session session, String user_id) {
         if (sessions.containsKey(user_id)) {
             sessions.remove(user_id);
@@ -43,10 +44,12 @@ public class SessionPool {
         sendMessage(JSON.toJSONString(message));
     }
 
+    /*私发*/
     public static void sendMessage(String sessionId, String message) {
         sessions.get(sessionId).getAsyncRemote().sendText(message);
     }
 
+    /*群发*/
     public static void sendMessage(String message) {
 
         for (String sessionId : sessions.keySet()) {

@@ -37,13 +37,15 @@ send.onclick = () => {
 }
 
 login.onclick = () => {
+    login.disabled = true;
+    username.disabled = true;
     if (username.value !== "" || username.value !== null) {
 
         if (typeof (WebSocket) === "undefined") {
             alert("此浏览器不支持WebSocket，无法获取聊天信息内容！");
         } else {
 
-            let socketUrl = "http://localhost:8090/websocket/websocket/" + username.value;
+            let socketUrl = "http://120.27.213.163:20101/chat_room/websocket/" + username.value;
             socketUrl = socketUrl.replace("http", "ws");
             if (socket !== null) {
                 socket.close();
@@ -90,6 +92,10 @@ login.onclick = () => {
 
 
             }
+        }
+
+        socket.onclose = ()=>{
+            console.log("websocket已关闭！");
         }
 
         return;

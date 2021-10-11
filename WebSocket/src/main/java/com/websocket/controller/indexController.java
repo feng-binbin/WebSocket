@@ -8,6 +8,6 @@ public class indexController {
 
     @RequestMapping("/")
     public String toIndex(){
-        return "index.html";
+        return "chatroom.html";
     }
 }

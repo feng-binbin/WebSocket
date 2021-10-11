@@ -56,7 +56,9 @@ body {
     width: 100%;
     height: 60%;
     font-size: 20px;
+    padding: 5px;
     resize: none;
+    overflow: hidden;
 }
 
 .leftFrame .bottomFoot {
@@ -76,13 +78,15 @@ body {
 
 .rightFrame .header{
     width: 100%;
-    height: 10%;
+    height: 5%;
     border: 1px solid black;
+    font-size: 24px;
+    text-align: center;
 }
 
 .rightFrame ul {
     width: 100%;
-    height: 90%;
+    height: 95%;
     list-style: none;
     overflow: hidden;
 }
@@ -93,6 +97,7 @@ body {
     border: 1px solid black;
     text-align: center;
     font-size: 24px;
+    cursor: pointer;
 }
 
 .rightFrame li a {
@@ -153,3 +158,4 @@ body {
     height: 0px;
     text-align: center;
 }
+
